@@ -1,0 +1,47 @@
+from collections import deque
+def water_jug_bfs(jug1_capacity, jug2_capacity, target):
+        visited = set()
+          queue = deque()
+            queue.append((0, 0))
+            parent = {}    
+    while queue:
+        current = queue.popleft() 
+        jug1, jug2 = current
+        if jug1 == target or jug2 == target:
+            print(f"Solution found: {jug1}, {jug2}")
+            return reconstruct_path(parent, (jug1, jug2)) 
+             if (jug1, jug2) in visited:
+            continue
+            visited.add((jug1, jug2
+        moves = []
+                moves.append((jug1_capacity, jug2))
+                moves.append((jug1, jug2_capacity))
+                moves.append((0, jug2))
+                moves.append((jug1, 0))
+                jug2_space = jug2_capacity - jug2
+        if jug1 > 0 and jug2_space > 0:
+            pour_amount = min(jug1, jug2_space)
+            moves.append((jug1 - pour_amount, jug2 + pour_amount))
+                jug1_space = jug1_capacity - jug1
+        if jug2 > 0 and jug1_space > 0:
+            pour_amount = min(jug2, jug1_space)
+            moves.append((jug1 + pour_amount, jug2 - pour_amount))
+                queue.append(move) 
+parent[move] = current
+        print("No solution found.")
+    return []
+
+def reconstruct_path(parent, state):   
+    path = []   
+    while state in parent:     
+        path.append(state)   
+        state = parent[state]  
+    path.reverse() 
+    return path  
+jug1_capacity = 4
+jug2_capacity = 3
+target = 2
+solution_path = water_jug_bfs(jug1_capacity, jug2_capacity, target)
+print("Steps to reach the solution:")
+for step in solution_path:
+    print(step)
