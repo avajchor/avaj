@@ -1,0 +1,14 @@
+% Define the associative law for addition
+associative_law(A, B, C, Result) :-
+Result is A + (B + C).
+% Define some example expressions
+expression1(2, 3, 4).
+expression2(5, 6, 7).
+% Derive the results using the associative law
+derive_results :-
+expression1(A, B, C),
+associative_law(A, B, C, Result1),
+expression2(X, Y, Z),
+associative_law(X, Y, Z, Result2),
+write(&#39;Result of expression 1 using associative law: &#39;), write(Result1), nl,
+write(&#39;Result of expression 2 using associative law: &#39;), write(Result2), nl.
