@@ -1,0 +1,19 @@
+prolog code
+
+coloring(WA,SA,NT,QU,NSW,VI) :- 
+different(WA,SA), 
+different(WA,NT), 
+different(NT,SA),
+different(NT,QU), 
+different(SA,QU), 
+different(SA,NSW), 
+different(SA,VI), 
+different(QU,E), 
+different(NSW,VI).
+
+different(red,blue). 
+different(blue,red). 
+different(blue,green). 
+different(red, green).
+different(green, blue,). b
+different(green,red). 
